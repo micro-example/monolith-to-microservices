@@ -1,0 +1,6 @@
+APPLICATION_ID: default
+service_description:
+  name: Client
+  version: 0.0.1
+  properties:
+    allowCrossApp: true

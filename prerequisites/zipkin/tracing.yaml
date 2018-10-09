@@ -1,0 +1,7 @@
+tracing:
+  tracer: zipkin
+  settings:
+    URI: http://MyZipkin:9411/api/v2/spans
+    batchSize: 10000
+    batchInterval: 10s
+    collector: http
