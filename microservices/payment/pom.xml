@@ -5,7 +5,7 @@
 	xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>demo-server</artifactId>
+	<artifactId>payment</artifactId>
 	<groupId>org.apache.servicecomb.samples</groupId>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>Java Chassis::Demo::demo::payment</name>
@@ -47,26 +47,76 @@
 	</dependencies>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>de.ntcomputer</groupId>
-				<artifactId>executable-packer-maven-plugin</artifactId>
-				<version>1.0.1</version>
-				<configuration>
-					<mainClass>org.apache.servicecomb.samples.demo.server.Server</mainClass>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>pack-executable-jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			 <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-      </plugin>
-		</plugins>
+			<plugins>
+				<plugin>
+					<groupId>org.commonjava.maven.plugins</groupId>
+					<artifactId>directory-maven-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>directories</id>
+							<goals>
+								<goal>highest-basedir</goal>
+							</goals>
+							<phase>initialize</phase>
+							<configuration>
+								<property>root.basedir</property>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<executions>
+						<execution>
+							<goals>
+								<goal>repackage</goal>
+							</goals>
+							<configuration>
+								<outputDirectory>${project.build.directory}/exec</outputDirectory>
+								<classifier>exec</classifier>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>io.fabric8</groupId>
+					<artifactId>docker-maven-plugin</artifactId>
+					<configuration>
+						<images>
+							<image>
+								<name>${project.artifactId}:${project.version}</name>
+								<alias>${project.artifactId}</alias>
+								<build>
+									<from>openjdk:8-jre-alpine</from>
+									<ports>
+										<port>8080</port>
+									</ports>
+									<assembly>
+										<mode>tar</mode>
+										<descriptor>${root.basedir}/assembly.xml
+										</descriptor>
+									</assembly>
+									<entryPoint>
+										<shell>java $JAVA_OPTS -jar /maven/exec/${project.artifactId}-${project.version}-exec.jar</shell>
+									</entryPoint>
+								</build>
+							</image>
+						</images>
+					</configuration>
+					<executions>
+						<execution>
+							<id>build</id>
+							<phase>package</phase>
+							<goals>
+								<goal>build</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+			</plugins>
 	</build>
+
 </project>

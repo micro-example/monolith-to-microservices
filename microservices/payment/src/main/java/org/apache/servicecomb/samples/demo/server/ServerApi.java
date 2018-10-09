@@ -17,6 +17,6 @@ public class ServerApi {
 	@Path("/payment")
 	@GET
 	public String payment(@QueryParam("total")  String total) {
-		return total;
+		return "Payment success for the amount " +total;
 	}
 }

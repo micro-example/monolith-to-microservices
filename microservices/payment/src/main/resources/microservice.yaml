@@ -1,4 +1,4 @@
-﻿APPLICATION_ID: huaweidemo
+﻿APPLICATION_ID: OSIConference
 service_description:
   name: payment
   version: 0.0.1
