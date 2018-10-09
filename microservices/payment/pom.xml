@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>demo-server</artifactId>
+	<groupId>org.apache.servicecomb.samples</groupId>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>Java Chassis::Demo::demo::payment</name>
+	<packaging>jar</packaging>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.apache.servicecomb</groupId>
+				<artifactId>java-chassis-dependencies</artifactId>
+				<version>1.0.0-m2</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.servicecomb</groupId>
+			<artifactId>provider-jaxrs</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicecomb</groupId>
+			<artifactId>transport-highway</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicecomb</groupId>
+			<artifactId>transport-rest-vertx</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicecomb</groupId>
+			<artifactId>handler-bizkeeper</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>de.ntcomputer</groupId>
+				<artifactId>executable-packer-maven-plugin</artifactId>
+				<version>1.0.1</version>
+				<configuration>
+					<mainClass>org.apache.servicecomb.samples.demo.server.Server</mainClass>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>pack-executable-jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			 <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+      </plugin>
+		</plugins>
+	</build>
+</project>
