@@ -7,7 +7,7 @@ services:
   MesherProvider:
     image: gochassis/mesher
     environment:
-      - CSE_REGISTRY_ADDR=http://ServiceCenter:30100 #https://cse.cn-north-1.myhwclouds.com:443
+      - CSE_REGISTRY_ADDR=http://ServiceCenter:30100 
       - SERVICE_NAME=Server
       - VERSION=0.0.1
       - APP_ID=default
@@ -16,11 +16,10 @@ services:
       - cse.monitor.enableGoRuntimeMetrics=true
     links:
       - ServiceCenter
-      - MyZipkin
   MesherConsumer:
     image: gochassis/mesher
     environment:
-      - CSE_REGISTRY_ADDR=http://ServiceCenter:30100 #https://cse.cn-north-1.myhwclouds.com:443
+      - CSE_REGISTRY_ADDR=http://ServiceCenter:30100 
       - SERVICE_NAME=Client
       - VERSION=0.0.1
       - APP_ID=default
@@ -29,9 +28,6 @@ services:
       - cse.monitor.enableGoRuntimeMetrics=true
     links:
       - ServiceCenter
-      - MyZipkin
-    volumes:
-      - ./zipkin:/opt/mesher/conf
     ports:
       - 9000:3000
   Server:
@@ -62,10 +58,6 @@ services:
       - 3000:3000
     links:
       - MyPrometheus
-  MyZipkin:
-    image: openzipkin/zipkin
-    ports:
-      - 9411:9411
   Importer:
     image: giantswarm/tiny-tools
     depends_on:
