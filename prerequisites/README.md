@@ -76,11 +76,11 @@ Start service-center frontend
 
 For Linux Users:
 ```
-cd service-center-frontend-linux.tar.gz
+cd service-center-frontend-linux
 ./start-frontend.sh
 ```
 For Mac Users:
 ```
-cd service-center-frontend-darwin.tar.gz
+cd service-center-frontend-darwin
 ./start-frontend.sh
 ```
