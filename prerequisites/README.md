@@ -1,8 +1,3 @@
-# Go-Mesher-Example
-
-This example illustrates the mesher integration with GoLang Client and Server.
-
-
 ## Getting Started
 
 ### Using DockerCompose
@@ -12,8 +7,8 @@ To run this example using docker compose you can execute the following commands
 ##### Step 1
 Clone this repo
 ```
-git clone https://github.com/go-mesh/mesher-examples
-cd Go-Mesher-Example
+git clone https://github.com/micro-example/monolith-to-microservices
+cd monolith-to-microservices/prerequisites
 ```
 
 ##### Step 2
@@ -21,7 +16,7 @@ Run Docker-Compose to bring up all the containers
 ```
 docker-compose up
 ```
-This will bring up Service-Center, Client, Server, MesherConsumer, MesherProvider, Zipkin, Grafana and Prometheus in docker container.
+This will bring up Service-Center, Client, Server, MesherConsumer, MesherProvider, Grafana and Prometheus in docker container.
 
 ```
 docker ps
@@ -63,7 +58,3 @@ The Zipkin Dashboard will be available on http://localhost:9411/zipkin/
 The Grafana Dashboard will be available on http://localhost:3000/dashboard/db/mesher-dashboard?refresh=5s&orgId=1  
 Prometheus data is available on http://localhost:9090/graph
 
-
-### Run on a VM Infrastructure as a Process
-
-Please follow [this guide](https://github.com/go-mesh/mesher-examples/tree/master/Infrastructure/VM) to run this example on a VM infrastructure.
