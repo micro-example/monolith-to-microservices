@@ -1,3 +1,7 @@
+## Monolith App Architecture
+
+<p align="center"><img src ="https://github.com/micro-example/monolith-to-microservices/raw/master/monolith/Architecture.jpg" /></p>
+
 # Steps to run the monolithic application  
 --------------------------------------------  
 1. Download the code from https://github.com/micro-example/monolith-to-microservices.git and follow the steps.
