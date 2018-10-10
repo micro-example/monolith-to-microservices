@@ -1,0 +1,12 @@
+version:  '3'
+services:
+  ServiceCenter:
+    image: servicecomb/service-center
+    ports:
+      - 30100:30100
+  Catalog:
+    image: example:raj
+    ports:
+      - 8089:8089 
+    environment:
+      CSE_REGISTRY_ADDR: http://ServiceCenter:30100
