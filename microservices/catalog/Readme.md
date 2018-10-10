@@ -19,10 +19,15 @@
 
 4. Run the docker image. 
  
+ Linux
    ```  
       docker run -d -e CSE_REGISTRY_ADDR=http://$listen_addr:30100 catalog:1.0.0 
    ```
-    Here ip need to replace with service center IP where service center is running.  
+   
+ Mac 
+ ```  
+      docker run -d -e CSE_REGISTRY_ADDR=http://docker.for.mac.localhost:30100 catalog:1.0.0 
+```
    
 4. Open the service center frontend ( localhost:30103 ) and check about catalog application registry.
    
