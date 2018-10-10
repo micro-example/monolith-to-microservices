@@ -5,7 +5,7 @@
 --------------------------------------------  
 1. Download the code from https://github.com/micro-example/monolith-to-microservices.git and follow the below steps.
 
-   ``` cd monolith-to-microservices/monolith/payment```
+   ``` cd monolith-to-microservices/microservices/payment```
 
 2. Perform  ```mvn clean install```
 it will generate the docker image with name ```payment:1.0.0-SNAPSHOT```
