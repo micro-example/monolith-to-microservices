@@ -4,7 +4,8 @@
 ##### Step 1
 Get Machine IP using ifconfig
 ```
-ifconfig
+net_name=$(ip -o -4 route show to default | awk '{print $5}')
+listen_addr=$(ifconfig $net_name | grep -E 'inet\W' | grep -o -E [0-9]+.[0-9]+.[0-9]+.[0-9]+ | head -n 1)
 ```
 
 
@@ -26,7 +27,7 @@ docker run -p 8088:80 -e http_proxy=127.0.0.1:30101 frontend:1.0.0
 Run mesher container as sidecar for PHP container using --net=container mode
 
 ```
-docker run -e CSE_REGISTRY_ADDR=http://$SC_IP:30100 -e SERVICE_NAME=FrontEnd -e APP_ID=OSIConference  --net=container:$PHP_CONTAINER_ID thanda/mesher:osi
+docker run -e CSE_REGISTRY_ADDR=http://$listen_addr:30100 -e SERVICE_NAME=FrontEnd -e APP_ID=OSIConference  --net=container:$PHP_CONTAINER_ID thanda/mesher:osi
 ```
 
 ##### Step 5
