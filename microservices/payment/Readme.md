@@ -8,7 +8,7 @@
    ``` cd monolith-to-microservices/monolith/payment```
 
 2. Perform  ```mvn clean install```
-it will generate the docker image with name "payment:1.0.0-SNAPSHOT".
+it will generate the docker image with name ```payment:1.0.0-SNAPSHOT```
 
 3. Run the docker image.  
    ```docker run -d -e SC_HOST={ip} -p 8081:8081 payment:1.0.0-SNAPSHOT```  
