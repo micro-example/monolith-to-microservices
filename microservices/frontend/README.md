@@ -20,15 +20,23 @@ docker build -t frontend:1.0.0 .
 Run PHP Image
 
 ```
-docker run -p 8088:80 -e http_proxy=127.0.0.1:30101 frontend:1.0.0
+docker run -p 8088:80 -e http_proxy=127.0.0.1:30101 --name PHP frontend:1.0.0
 ```
 
 ##### Step 4
+Get PHP container ID
+
+```
+PHP_CONTAINER_ID=$(docker ps -aqf "name=PHP")
+```
+
+
+##### Step 5
 Run mesher container as sidecar for PHP container using --net=container mode
 
 ```
 docker run -e CSE_REGISTRY_ADDR=http://$listen_addr:30100 -e SERVICE_NAME=FrontEnd -e APP_ID=OSIConference  --net=container:$PHP_CONTAINER_ID thanda/mesher:osi
 ```
 
-##### Step 5
+##### Step 6
 Open the link in Browser (http://127.0.0.1:8088/test.php).  You should be able to see the items and it's prices with checkbox, select the items and click buy, you will get total as reponse from payment.
