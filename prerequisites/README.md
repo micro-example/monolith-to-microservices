@@ -58,3 +58,29 @@ The Zipkin Dashboard will be available on http://localhost:9411/zipkin/
 The Grafana Dashboard will be available on http://localhost:3000/dashboard/db/mesher-dashboard?refresh=5s&orgId=1  
 Prometheus data is available on http://localhost:9090/graph
 
+##### Step 4
+
+Untar Service-Center Frontend package
+For Linux users:
+```
+tar -xvf  service-center-frontend-linux.tar.gz
+```
+For Mac Users:
+```
+tar -xvf service-center-frontend-darwin.tar.gz
+```
+
+##### Step 5
+
+Start service-center frontend
+
+For Linux Users:
+```
+cd service-center-frontend-linux.tar.gz
+./start-frontend.sh
+```
+For Mac Users:
+```
+cd service-center-frontend-darwin.tar.gz
+./start-frontend.sh
+```
