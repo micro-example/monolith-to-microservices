@@ -20,7 +20,7 @@ docker build -t frontend:1.0.0 .
 Run PHP Image
 
 ```
-docker run -p 8088:80 -e http_proxy=127.0.0.1:30101 --name PHP frontend:1.0.0
+docker run -d -p 8088:80 -e http_proxy=127.0.0.1:30101 --name PHP frontend:1.0.0
 ```
 
 ##### Step 4
@@ -35,7 +35,7 @@ PHP_CONTAINER_ID=$(docker ps -aqf "name=PHP")
 Run mesher container as sidecar for PHP container using --net=container mode
 
 ```
-docker run -e CSE_REGISTRY_ADDR=http://$listen_addr:30100 -e SERVICE_NAME=FrontEnd -e APP_ID=OSIConference  --net=container:$PHP_CONTAINER_ID thanda/mesher:osi
+docker run -d -e CSE_REGISTRY_ADDR=http://$listen_addr:30100 -e SERVICE_NAME=FrontEnd -e APP_ID=OSIConference  --net=container:$PHP_CONTAINER_ID thanda/mesher:osi
 ```
 
 ##### Step 6
