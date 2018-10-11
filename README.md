@@ -1,7 +1,7 @@
 # monolith-to-microservices
 
 ## Overview
-This is a repo which has one monolith application and few microservices.
+This project demonstrates how to transform a monolith application into microservices using ServiceComb frameworks. 
 
 ## Monolith App Architecture
 
